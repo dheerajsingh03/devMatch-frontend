@@ -9,9 +9,11 @@ const Login = () => {
 
   const [password, setPassword] = useState("Dheeraj@123");
 
+  const [errors, setError] = useState("");
+
   const dispatch = useDispatch();
 
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
   const handleLogin = async () => {
     try {
@@ -25,10 +27,13 @@ const Login = () => {
           withCredentials: true,
         }
       );
+      console.log(res);
+      if (res.data === "Invalid Creditential")
+        throw new Error("Invalid Creditential");
       dispatch(addUser(res.data));
-      return navigate('/');
+      return navigate("/");
     } catch (err) {
-      console.error(err);
+      setError(err?.message);
     }
   };
 
@@ -64,9 +69,10 @@ const Login = () => {
                 className="input input-bordered w-full max-w-xs"
               />
             </label>
+            <p className="text-red-600">{errors}</p>
           </div>
           <div className="card-actions justify-center m-2">
-            <button className="btn btn-primary" onClick={handleLogin}>
+            <button className="btn btn-primary" onClick={() => handleLogin()}>
               Login
             </button>
           </div>
