@@ -29,7 +29,7 @@ const NavBar = () => {
     <div>
       <div className="navbar bg-base-300">
         <div className="flex-1">
-          <a className="btn btn-ghost text-xl">👩‍💻DevTinder</a>
+          <Link to='/' className="btn btn-ghost text-xl">👩‍💻DevTinder</Link>
         </div>
         {user && (
           <div className="flex-none gap-2">
@@ -58,7 +58,7 @@ const NavBar = () => {
                   </Link>
                 </li>
                 <li>
-                  <a>Settings</a>
+                  <Link to={"/connections"}>Connections</Link>
                 </li>
                 <li>
                   <Link to={"/login"} onClick={() => handleLogout()}>
