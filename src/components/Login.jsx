@@ -27,7 +27,7 @@ const Login = () => {
           withCredentials: true,
         }
       );
-      console.log(res);
+      
       if (res.data === "Invalid Creditential")
         throw new Error("Invalid Creditential");
       dispatch(addUser(res.data));
