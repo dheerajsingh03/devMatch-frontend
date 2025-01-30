@@ -7,27 +7,35 @@ import UserCard from "./UserCard";
 
 const Feed = () => {
   const dispatch = useDispatch();
-
   const feed = useSelector((store) => store.feed);
 
   const getFeed = async () => {
     try {
-      const res = await axios.get(BASE_URL + "/feed", {
+      const res = await axios.get(`${BASE_URL}/feed`, {
         withCredentials: true,
       });
-      dispatch(addFeed(res.data));
-    } catch (err) {}
+
+      const feedData = Array.isArray(res.data)
+        ? res.data
+        : res.data?.data || [];
+      dispatch(addFeed(feedData));
+    } catch (err) {
+      console.error("Error fetching feed:", err);
+    }
   };
+
   useEffect(() => {
     getFeed();
   }, []);
 
   return (
-    feed && (
-      <div>
-        <UserCard user={feed.data[0]} /> : null
-      </div>
-    )
+    <div>
+      {feed && feed.length > 0 ? (
+        <UserCard user={feed[0]} />
+      ) : (
+        <p className="flex justify-center my-10">No users available.</p>
+      )}
+    </div>
   );
 };
 
