@@ -4,6 +4,8 @@ import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
 import { BASE_URL } from "../utils/constants";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet"; // Import Helmet
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -39,6 +41,7 @@ const Login = () => {
       setError(err?.message);
     }
   };
+
   const handleSignUp = async () => {
     try {
       const res = await axios.post(
@@ -57,8 +60,6 @@ const Login = () => {
       if (res.data === "Invalid Creditential")
         throw new Error("Invalid Creditential");
       dispatch(addUser(res.data.data));
-      
-
       return navigate("/");
     } catch (err) {
       setError(err?.message);
@@ -67,6 +68,10 @@ const Login = () => {
 
   return (
     <div className="flex justify-center my-[6rem]">
+      {/* Helmet for dynamic title */}
+      <Helmet>
+        <title>{isSignUp ? "Sign Up - DevMatch" : "Login - DevMatch"}</title>
+      </Helmet>
       <div className="card bg-base-300 w-96 shadow-xl">
         <div className="card-body">
           {isSignUp ? (
@@ -82,9 +87,7 @@ const Login = () => {
                     <span className="label-text">First Name</span>
                   </div>
                   <input
-                    onChange={(e) => {
-                      setFirstName(e.target.value);
-                    }}
+                    onChange={(e) => setFirstName(e.target.value)}
                     type="text"
                     value={firstName}
                     className="input input-bordered w-full max-w-xs"
@@ -95,9 +98,7 @@ const Login = () => {
                     <span className="label-text">Last Name</span>
                   </div>
                   <input
-                    onChange={(e) => {
-                      setLastName(e.target.value);
-                    }}
+                    onChange={(e) => setLastName(e.target.value)}
                     type="text"
                     value={lastName}
                     className="input input-bordered w-full max-w-xs"
@@ -111,9 +112,7 @@ const Login = () => {
               </div>
               <input
                 value={email}
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
+                onChange={(e) => setEmail(e.target.value)}
                 type="email"
                 className="input input-bordered w-full max-w-xs"
               />
@@ -124,9 +123,7 @@ const Login = () => {
               </div>
               <input
                 value={password}
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
+                onChange={(e) => setPassword(e.target.value)}
                 type="password"
                 className="input input-bordered w-full max-w-xs"
               />
@@ -138,7 +135,7 @@ const Login = () => {
             <p className="flex justify-center">
               Have an Account?
               <span
-                onClick={() => handleToggle()}
+                onClick={handleToggle}
                 className="text-blue-600 cursor-pointer"
               >
                 {" "}
@@ -147,9 +144,9 @@ const Login = () => {
             </p>
           ) : (
             <p className="flex justify-center">
-              New to DevTinder?
+              New to DevMatch?
               <span
-                onClick={() => handleToggle()}
+                onClick={handleToggle}
                 className="text-blue-600 cursor-pointer"
               >
                 {" "}
@@ -159,14 +156,11 @@ const Login = () => {
           )}
           <div className="card-actions justify-center m-2">
             {isSignUp ? (
-              <button
-                className="btn btn-primary"
-                onClick={() => handleSignUp()}
-              >
+              <button className="btn btn-primary" onClick={handleSignUp}>
                 Sign Up
               </button>
             ) : (
-              <button className="btn btn-primary" onClick={() => handleLogin()}>
+              <button className="btn btn-primary" onClick={handleLogin}>
                 Login
               </button>
             )}

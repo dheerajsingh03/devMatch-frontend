@@ -7,7 +7,11 @@ import appStore from "./utils/appStore";
 import Feed from "./components/Feed";
 import Connections from "./components/Connections";
 import Request from "./components/Request";
+import { useEffect } from "react";
 function App() {
+  useEffect(() => {
+    document.title = "DevMatch";
+  }, []);
   return (
     <Provider store={appStore}>
       <BrowserRouter basename="/">
