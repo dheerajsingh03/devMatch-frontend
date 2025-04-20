@@ -2,43 +2,38 @@ import React from "react";
 
 const ShippingPolicy = () => {
   return (
-    <div className="p-6 max-w-4xl mx-auto text-gray-800">
+    <div className="max-w-3xl mx-auto p-6 text-gray-800">
       <h1 className="text-3xl font-bold mb-4">Shipping and Delivery Policy</h1>
-      <p className="mb-4 text-sm text-gray-500">Last updated: April 20, 2025</p>
-
       <p className="mb-4">
-        At <strong>DevMatch</strong>, we provide digital-only services. There is no physical shipping involved.
-        However, in compliance with Razorpay's onboarding requirements, we have outlined our delivery practices for transparency.
+        DevMatch is a digital-only platform, and we do not ship any physical goods. All services provided by DevMatch are available online and accessible immediately upon successful registration and login.
       </p>
 
-      <h2 className="text-xl font-semibold mt-6 mb-2">🚚 Delivery Method</h2>
+      <h2 className="text-xl font-semibold mb-2">Service Availability</h2>
       <p className="mb-4">
-        All services offered on DevMatch are delivered <strong>digitally</strong> through our platform.
-        Users can access all features and services by logging into their account.
+        Upon account creation and authentication, users can instantly access all features of the DevMatch platform, including:
+      </p>
+      <ul className="list-disc list-inside mb-4 space-y-1">
+        <li>User profile management</li>
+        <li>Connecting and messaging with other users</li>
+        <li>Viewing requests and connections</li>
+        <li>Exploring new matches on the feed</li>
+      </ul>
+
+      <h2 className="text-xl font-semibold mb-2">No Physical Shipping</h2>
+      <p className="mb-4">
+        As DevMatch operates entirely online, there are no delivery charges or shipping timelines involved.
       </p>
 
-      <h2 className="text-xl font-semibold mt-6 mb-2">🕒 Delivery Timeline</h2>
+      <h2 className="text-xl font-semibold mb-2">Support</h2>
       <p className="mb-4">
-        Once registered and logged in, users will gain <strong>instant access</strong> to all digital features.
-        No waiting period is involved.
+        If you experience any delay or issue accessing the platform after login, please reach out to our support team at{" "}
+        <a href="mailto:support@devmatch.in" className="text-blue-600 underline">
+          support@devmatch.in
+        </a>.
       </p>
 
-      <h2 className="text-xl font-semibold mt-6 mb-2">📍 Service Availability</h2>
-      <p className="mb-4">
-        Our services are available across <strong>India and globally</strong>, as long as the user has an active internet connection.
-      </p>
-
-      <h2 className="text-xl font-semibold mt-6 mb-2">📦 Shipping of Physical Items</h2>
-      <p className="mb-4">
-        At present, <strong>DevMatch does not sell or ship any physical products</strong>. Hence, no physical delivery is applicable.
-      </p>
-
-      <h2 className="text-xl font-semibold mt-6 mb-2">❓ Issues with Access</h2>
       <p>
-        If you experience any issues accessing digital services, please contact us at{" "}
-        <a href="mailto:support@devmatch.com" className="text-blue-500 underline">
-          support@devmatch.com
-        </a>. We usually respond within <strong>24–48 hours</strong>.
+        Thank you for choosing DevMatch. We’re here to make meaningful connections seamless and instant.
       </p>
     </div>
   );
