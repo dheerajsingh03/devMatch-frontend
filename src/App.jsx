@@ -14,6 +14,7 @@ import TermsAndConditions from "./components/TermsAndConditions";
 import RefundPolicy from "./components/RefundPolicy";
 import ShippingPolicy from "./components/ShippingPolicy";
 import ContactUs from "./components/ContactUs";
+import Premium from "./components/Premium";
 
 function App() {
   useEffect(() => {
@@ -38,6 +39,7 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/connections" element={<Connections />} />
             <Route path="/requests" element={<Request />} />
+            <Route path="/premium" element={<Premium />} />
           </Route>
         </Routes>
       </BrowserRouter>
