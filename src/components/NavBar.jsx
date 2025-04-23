@@ -56,7 +56,7 @@ const NavBar = () => {
                 <li>
                   <Link to={"/profile"} className="justify-between">
                     Profile
-                    <span className="badge">New</span>
+                    
                   </Link>
                 </li>
                 <li>
@@ -66,7 +66,8 @@ const NavBar = () => {
                   <Link to={"/requests"}>Requests</Link>
                 </li>
                 <li>
-                  <Link to={"/premium"}>Premium</Link>
+                  <Link to={"/premium"}>Premium
+                  <span className="badge">New</span></Link>
                 </li>
                 <li>
                   <Link to={"/login"} onClick={() => handleLogout()}>
